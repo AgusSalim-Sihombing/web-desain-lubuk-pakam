@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Pseudo-Elements</title>
+    <style>
+        pre::first-letter{
+            font-size: 20px;
+            color:red;
+            font-weight: bold;
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        pre::first-line{    
+            color:blue;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            font-size: 12px;
+        }
+        pre::selection{
+            background-color: red;;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <pre>
+Peraturan Lab Komputer
+1. Dilarang makan dan minum di dalam lab
+2. Dilarang merokok di dalam lab
+    </pre>
+</body>
+</html>
