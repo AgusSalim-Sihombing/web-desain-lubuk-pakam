@@ -1,0 +1,41 @@
+.horizontal-nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+}
+
+.horizontal-nav li {
+    margin-right: 20px;
+}
+
+.horizontal-nav a {
+    text-decoration: none;
+    color: #333;
+    padding: 10px;
+}
+
+.horizontal-nav a:hover {
+    background-color: #f0f0f0;
+}
+
+.vertical-nav ul {
+    list-style: none;
+    padding: 0;
+    width: 200px;
+}
+
+.vertical-nav li {
+    margin-bottom: 10px;
+}
+
+.vertical-nav a {
+    text-decoration: none;
+    color: #333;
+    display: block;
+    padding: 10px;
+    background-color: #f8f8f8;
+}
+
+.vertical-nav a:hover {
+    background-color: #ddd;
+}

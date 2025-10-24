@@ -1,0 +1,42 @@
+html{
+    scroll-behavior: smooth;
+}
+
+.nav-horizontal ul{
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-horizontal{
+    background-color: rgb(43, 43, 43);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    left: 0;
+}
+
+.nav-horizontal li a{
+    text-decoration: none;
+    color: white;
+    padding: 15px;
+    display: block;
+
+}
+
+.nav-horizontal li a:hover{
+    background-color: rgb(194, 194, 194);
+    transition:background-color 0.5s;
+}
+
+.content{
+    padding-top: 100px;
+    padding: 30px;
+}
+
+.page-section{
+    padding: 40px;
+}
