@@ -1,0 +1,61 @@
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    display: flex;
+    /* Menggunakan Flexbox untuk tata letak sidebar dan konten */
+}
+
+/* --- SIDEBAR --- */
+.sidebar {
+    width: 100px;
+    /* Lebar sidebar */
+    height: 100%;
+    /* Membuat sidebar setinggi viewport */
+    position: fixed;
+    /* Membuat sidebar tetap di tempat saat di-scroll */
+    background-color: #333;
+    padding-top: 20px;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar li a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    padding: 15px 20px;
+    transition: background-color 0.3s;
+}
+
+.sidebar li a:hover {
+    background-color: #575757;
+}
+
+/* --- Tampilan Tautan Aktif --- */
+.sidebar li a.active {
+    background-color: #007bff;
+    /* Warna yang menandakan aktif */
+    color: white;
+    font-weight: bold;
+}
+
+/* --- KONTEN UTAMA --- */
+.content {
+    margin-left: 100px;
+    /* Memberi ruang untuk sidebar */
+    /* flex-grow: 1; */
+    padding: 20px;
+}
+
+    

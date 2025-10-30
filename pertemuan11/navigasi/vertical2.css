@@ -1,0 +1,39 @@
+.container{
+    display: flex;
+}
+html {
+    scroll-behavior: smooth;
+}
+body{
+    margin: 0;
+}
+
+.sidebar{
+    background-color: black;
+    width: 150px;
+    color: white;
+    height: 100%;
+    position: fixed;
+}
+
+.sidebar ul{
+    list-style: none;
+    padding: 20px;
+}
+
+.sidebar ul li a{
+    display: block;
+    color: white;
+    text-decoration: none;
+    padding: 15px 20px;
+}
+
+.sidebar ul li a:hover{
+    background-color: grey;
+    transform: translateX(20px);
+}
+
+.content{
+    margin-left: 150px;
+    padding: 20px;
+}

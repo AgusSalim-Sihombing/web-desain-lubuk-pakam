@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Adventure - Jelajahi Dunia Bersama Kami</title>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+
+        /* --- SIDEBAR --- */
+        .sidebar {
+            width: 200px;
+            height: 100vh;
+            position: fixed;
+            background: rgba(0, 153, 191, 0.528);
+            padding-top: 20px;
+            box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+        }
+
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .sidebar li a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            padding: 15px 25px;
+            /* transition: background-color 0.3s, transform 0.3s; */
+            border-left: 3px solid transparent;
+        }
+
+        .sidebar li a:hover {
+            background-color: rgba(255,255,255,0.2);
+            transform: translateX(10px);
+            border-left-color: #fff;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        
+
+        /* --- KONTEN UTAMA --- */
+        .content {
+            margin-left: 200px;
+            padding: 20px;
+        }
+
+        section {
+            padding: 60px 0;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            color: #0077be;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            text-align: center;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+
+        p {
+            line-height: 1.6;
+            font-size: 1.1em;
+            margin-bottom: 20px;
+        }
+
+        .travel-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+
+        ul {
+            list-style-type: disc;
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 10px;
+            line-height: 1.5;
+        }
+
+        .hero-image {
+            width: 100%;
+            height: 300px;
+            background-image: url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .contact-info {
+            background: linear-gradient(135deg, #00b4d8 0%, #0077be 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #0077be;
+            color: white;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="sidebar">
+        <ul>
+            <li><a href="#home">Beranda</a></li>
+            <li><a href="#profil">Tentang Kami</a></li>
+            <li><a href="#kontak">Kontak</a></li>
+        </ul>
+    </nav>
+
+    <div class="content">
+        <section id="home">
+            <div class="hero-image"></div>
+            <h1>Selamat Datang di Travel Adventure!</h1>
+            <p>Jelajahi keindahan dunia bersama kami! Dari pantai tropis hingga pegunungan megah, kami menyediakan pengalaman perjalanan tak terlupakan yang disesuaikan dengan impian Anda.</p>
+            <div class="travel-card">
+                <h2>Destinasi Populer</h2>
+                <ul>
+                    <li><strong>Bali, Indonesia:</strong> Pantai indah dan budaya kaya.</li>
+                    <li><strong>Paris, Prancis:</strong> Kota cinta dengan menara Eiffel ikonik.</li>
+                    <li><strong>Grand Canyon, AS:</strong> Keajaiban alam yang menakjubkan.</li>
+                </ul>
+                <p>Bergabunglah dengan ribuan traveler yang telah memilih kami untuk petualangan mereka!</p>
+            </div>
+            <div style="height: 400px;"></div>
+        </section>
+
+        <section id="profil">
+            <h1>Tentang Travel Adventure</h1>
+            <p>Didirikan sejak tahun 1990, Travel Adventure telah menjadi mitra terpercaya bagi para pecinta perjalanan di seluruh dunia. Kami berkomitmen menyediakan layanan premium dengan tim ahli yang berpengalaman.</p>
+            <div class="travel-card">
+                <h2>Visi & Misi Kami</h2>
+                <ul>
+                    <li>Membuat perjalanan aman, nyaman, dan penuh inspirasi.</li>
+                    <li>Mendukung pariwisata berkelanjutan untuk menjaga keindahan alam.</li>
+                    <li>Menyediakan paket wisata yang terjangkau dan berkualitas tinggi.</li>
+                </ul>
+                <p>Dengan jaringan global, kami siap membawa Anda ke destinasi impian!</p>
+            </div>
+            <div style="height: 400px;"></div>
+        </section>
+
+        <section id="kontak">
+            <h1>Hubungi Kami</h1>
+            <p>Siap memulai petualangan? Jangan ragu untuk bertanya lebih lanjut. Tim kami siap membantu!</p>
+            <div class="contact-info">
+                <h2>Info Kontak</h2>
+                <p><strong>Email:</strong> info@traveladventure.id<br>
+                <strong>Telepon:</strong> (021) 123-4567<br>
+                <strong>Alamat:</strong> Jl. Wisata No. 88, Jakarta Selatan</p>
+            </div>
+            <div style="height: 400px;"></div>
+        </section>
+
+        <footer>
+            <p>&copy; 2025 Travel Adventure. Semua hak dilindungi. Jelajahi dunia dengan hati terbuka!</p>
+        </footer>
+    </div>
+</body>
+</html>
