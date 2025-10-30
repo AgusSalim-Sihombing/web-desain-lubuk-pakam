@@ -72,3 +72,9 @@ h1 {
     border-radius: 10px;
     margin-bottom: 20px;
 }
+
+.contact-info {
+    background: linear-gradient(135deg, #00b4d8 0%, #0077be 100%);
+    color: white;
+    text-align: center;
+}
