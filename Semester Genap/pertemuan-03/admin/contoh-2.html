@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="id">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Web Sederhana - Dropdown Navigasi</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f6fb;
+            color: #111;
+            line-height: 1.5;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* ===== NAVBAR ===== */
+        .nav {
+            background: #fff;
+            border-bottom: 1px solid #e6e6e6;
+            padding: 12px 16px;
+            position: sticky;
+            top: 0;
+        }
+
+        .nav .wrap {
+            max-width: 900px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+        }
+
+        .brand {
+            font-weight: 800;
+            padding: 8px 10px;
+            border: 1px solid #eee;
+            border-radius: 12px;
+        }
+
+        .menu {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .menu>li {
+            position: relative;
+        }
+
+        .menu a {
+            display: inline-block;
+            padding: 10px 12px;
+            border-radius: 12px;
+            font-weight: 600;
+            border: 1px solid transparent;
+        }
+
+        .menu a:hover,
+        .menu a:focus-visible {
+            border-color: #111;
+            outline: none;
+        }
+
+        /* ===== DROPDOWN (Level 1) ===== */
+        .dropdown {
+            position: absolute;
+            top: 44px;
+            left: 0;
+            min-width: 200px;
+            background: #fff;
+            border: 1px solid #e6e6e6;
+            border-radius: 12px;
+            padding: 6px;
+            box-shadow: 0 12px 22px rgba(0, 0, 0, 0.08);
+            display: none;
+        }
+
+        .has-dd:hover>.dropdown,
+        .has-dd:focus-within>.dropdown {
+            display: block;
+        }
+
+        .dropdown a {
+            display: block;
+            padding: 10px 10px;
+            border-radius: 10px;
+            border: 1px solid transparent;
+            font-weight: 600;
+        }
+
+        .dropdown a:hover,
+        .dropdown a:focus-visible {
+            border-color: #111;
+            outline: 2px solid red;
+        }
+
+        /* ===== SUBMENU (Multi-tier) ===== */
+        .has-sub {
+            position: relative;
+        }
+
+        .submenu {
+            position: absolute;
+            top: 0;
+            left: calc(100% + 6px);
+            min-width: 180px;
+            background: #fff;
+            border: 1px solid #e6e6e6;
+            border-radius: 12px;
+            padding: 6px;
+            box-shadow: 0 12px 22px rgba(0, 0, 0, 0.08);
+            display: none;
+        }
+
+        .has-sub:hover>.submenu,
+        .has-sub:focus-within>.submenu {
+            display: block;
+        }
+
+        .arrow {
+            float: right;
+            opacity: 0.6;
+        }
+
+        /* ===== KONTEN ===== */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 18px 16px;
+        }
+
+        .card {
+            background: #fff;
+            border: 1px solid #e6e6e6;
+            border-radius: 14px;
+            padding: 16px;
+            margin: 12px 0;
+        }
+
+        .card h2 {
+            margin: 0 0 8px;
+            font-size: 18px;
+        }
+
+        .card p {
+            margin: 6px 0;
+            color: #444;
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 12px;
+            border-radius: 12px;
+            border: 1px solid #111;
+            font-weight: 700;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- NAVBAR -->
+    <header class="nav">
+        <div class="wrap">
+            <a class="brand" href="#home">WebMateri</a>
+
+            <ul class="menu">
+                <li><a href="#home">Home</a></li>
+
+                <!-- DROPDOWN MATERI -->
+                <li class="has-dd">
+                    <a href="#materi">Materi ▾</a>
+
+                    <ul class="dropdown">
+                        <li><a href="#html">HTML</a></li>
+
+                        <li class="has-sub">
+                            <a href="#css">CSS <span class="arrow">▸</span></a>
+                            <ul class="submenu">
+                                <li><a href="#css-list">CSS List</a></li>
+                                <li><a href="#css-dropdown">CSS Dropdown</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="has-sub">
+                            <a href="#project">Project <span class="arrow">▸</span></a>
+                            <ul class="submenu">
+                                <li><a href="#project-1">Mini Project 1</a></li>
+                                <li><a href="#project-2">Mini Project 2</a></li>
+                            </ul>
+                        </li>
+
+                        <li><a href="#kontak">Kontak</a></li>
+                    </ul>
+                </li>
+
+                <li><a href="#about">About</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- KONTEN -->
+    <main class="container">
+        <section id="home" class="card">
+            <h2>Home</h2>
+            <p>Ini contoh web sederhana. Navigasi atas pakai dropdown (tanpa JavaScript).</p>
+            <p>Coba klik menu <b>Materi</b> → pilih sub materi.</p>
+        </section>
+
+        <section id="materi" class="card">
+            <h2>Materi</h2>
+            <p>Di menu Materi ada dropdown level 1 dan submenu (multi-tier).</p>
+        </section>
+
+        <section id="html" class="card">
+            <h2>HTML</h2>
+            <p>HTML dipakai untuk struktur: heading, paragraf, list, tabel, form, dll.</p>
+            <a class="btn" href="#home">Kembali ke Home</a>
+        </section>
+
+        <section id="css" class="card">
+            <h2>CSS</h2>
+            <p>CSS dipakai untuk styling: warna, ukuran, layout, hover, responsive.</p>
+        </section>
+
+        <section id="css-list" class="card">
+            <h2>CSS List</h2>
+            <p>Contoh: mengubah bullet, jarak item, membuat list jadi “card list”.</p>
+            <a class="btn" href="#css">Kembali ke CSS</a>
+        </section>
+
+        <section id="css-dropdown" class="card">
+            <h2>CSS Dropdown</h2>
+            <p>Dropdown CSS-only biasanya pakai <b>position</b> + <b>:hover</b> + <b>:focus-within</b>.</p>
+            <a class="btn" href="#css">Kembali ke CSS</a>
+        </section>
+
+        <section id="project" class="card">
+            <h2>Project</h2>
+            <p>Project adalah latihan menggabungkan HTML + CSS jadi web sederhana.</p>
+        </section>
+
+        <section id="project-1" class="card">
+            <h2>Mini Project 1</h2>
+            <p>Buat halaman profil + list card + navbar dropdown sederhana.</p>
+            <a class="btn" href="#project">Kembali ke Project</a>
+        </section>
+
+        <section id="project-2" class="card">
+            <h2>Mini Project 2</h2>
+            <p>Buat landing page sekolah mini: Home, Materi, Kontak.</p>
+            <a class="btn" href="#project">Kembali ke Project</a>
+        </section>
+
+        <section id="kontak" class="card">
+            <h2>Kontak</h2>
+            <p>Email: contoh@sekolah.sch.id</p>
+            <p>Instagram: @webmateri</p>
+        </section>
+
+        <section id="about" class="card">
+            <h2>About</h2>
+            <p>Website latihan untuk belajar dropdown navigasi tanpa JavaScript.</p>
+        </section>
+    </main>
+</body>
+
+</html>

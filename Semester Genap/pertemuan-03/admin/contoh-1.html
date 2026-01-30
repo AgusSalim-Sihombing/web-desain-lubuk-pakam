@@ -1,0 +1,496 @@
+<!doctype html>
+<html lang="id">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Dropdown Box & Navigasi Dropdown (CSS Only)</title>
+
+    <style>
+        /* ========== RESET RINGAN ========== */
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f6f7fb;
+            color: #111;
+            line-height: 1.5;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        /* ========== LAYOUT UMUM ========== */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 18px;
+        }
+
+        .card {
+            background: #fff;
+            border: 1px solid #e6e6e6;
+            border-radius: 16px;
+            padding: 18px;
+            box-shadow: 0 10px 26px rgba(0, 0, 0, 0.05);
+            margin: 14px 0;
+        }
+
+        h1 {
+            font-size: 22px;
+            margin: 0 0 10px;
+        }
+
+        h2 {
+            font-size: 18px;
+            margin: 0 0 10px;
+        }
+
+        p {
+            margin: 8px 0;
+            color: #444;
+        }
+
+        /* =========================================================
+       1) DROPDOWN BOX (SELECT) — Styling rapi
+       Catatan: tanpa JS, select tidak otomatis pindah halaman.
+       ========================================================= */
+        .field {
+            display: grid;
+            gap: 8px;
+            max-width: 520px;
+            margin-top: 10px;
+        }
+
+        label {
+            font-weight: 700;
+            font-size: 14px;
+            color: #222;
+        }
+
+        .select-wrap {
+            position: relative;
+        }
+
+        select {
+            width: 100%;
+            appearance: none;
+            /* hilangkan panah default (browser) */
+            -webkit-appearance: none;
+            -moz-appearance: none;
+
+            padding: 12px 44px 12px 12px;
+            border-radius: 14px;
+            border: 1px solid #ddd;
+            background: #fff;
+            font-size: 15px;
+            outline: none;
+            transition: 0.2s;
+        }
+
+        select:focus {
+            border-color: #111;
+            box-shadow: 0 0 0 3px rgba(17, 17, 17, 0.12);
+        }
+
+        /* Panah custom (CSS) */
+        .select-wrap::after {
+            content: "▾";
+            position: absolute;
+            right: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            pointer-events: none;
+            color: #111;
+            font-size: 16px;
+        }
+
+        /* =========================================================
+       2) NAVBAR DROPDOWN CSS-ONLY (hover + focus-within)
+       ========================================================= */
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background: #fff;
+            border-bottom: 1px solid #e6e6e6;
+        }
+
+        .nav-inner {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 12px 18px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 14px;
+        }
+
+        .brand {
+            font-weight: 800;
+            letter-spacing: 0.3px;
+            padding: 8px 10px;
+            border-radius: 12px;
+            border: 1px solid #eee;
+        }
+
+        .nav {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .nav>li {
+            position: relative;
+            /* anchor untuk dropdown */
+        }
+
+        .nav a {
+            display: inline-block;
+            padding: 10px 12px;
+            border-radius: 12px;
+            border: 1px solid transparent;
+            transition: 0.2s;
+            color: #111;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .nav a:hover,
+        .nav a:focus-visible {
+            border-color: #111;
+            outline: none;
+            transform: translateY(-1px);
+        }
+
+        /* Dropdown panel */
+        .dropdown {
+            position: absolute;
+            top: 44px;
+            left: 0;
+
+            min-width: 200px;
+            background: #fff;
+            border: 1px solid #e6e6e6;
+            border-radius: 14px;
+            padding: 8px;
+            box-shadow: 0 16px 30px rgba(0, 0, 0, 0.08);
+
+            display: none;
+            /* default hidden */
+        }
+
+        /* Tampilkan dropdown saat hover (mouse) */
+        .has-dropdown:hover>.dropdown {
+            display: block;
+        }
+
+        /* Tampilkan dropdown saat fokus keyboard (Tab) */
+        .has-dropdown:focus-within>.dropdown {
+            display: block;
+        }
+
+        .dropdown a {
+            display: block;
+            padding: 10px 10px;
+            border-radius: 12px;
+            border: 1px solid transparent;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .dropdown a:hover,
+        .dropdown a:focus-visible {
+            border-color: #111;
+            transform: none;
+        }
+
+        /* =========================================================
+       3) MULTI-TIER DROPDOWN (submenu)
+       ========================================================= */
+        .has-sub {
+            position: relative;
+        }
+
+        .submenu {
+            position: absolute;
+            top: 0;
+            left: calc(100% + 8px);
+
+            min-width: 180px;
+            background: #fff;
+            border: 1px solid #e6e6e6;
+            border-radius: 14px;
+            padding: 8px;
+            box-shadow: 0 16px 30px rgba(0, 0, 0, 0.08);
+
+            display: none;
+        }
+
+        /* Panah kecil indikator submenu */
+        .sub-indicator {
+            float: left;
+            opacity: 0.7;
+        }
+
+        .has-sub:hover>.submenu,
+        .has-sub:focus-within>.submenu {
+            display: block;
+        }
+
+        /* =========================================================
+       4) PSEUDO-INTERAKTIF MOBILE (DETAILS)
+       - Ini alternatif supaya aman di HP (tap buka tutup)
+       ========================================================= */
+        .mobile-nav {
+            display: none;
+            margin-left: auto;
+        }
+
+        details.dd {
+            border: 1px solid #e6e6e6;
+            border-radius: 14px;
+            padding: 8px 10px;
+            background: #fff;
+            min-width: 220px;
+        }
+
+        details.dd summary {
+            cursor: pointer;
+            font-weight: 800;
+            list-style: none;
+            outline: none;
+        }
+
+        /* hilangkan marker default */
+        details.dd summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .dd-links a {
+            display: block;
+            padding: 10px 10px;
+            border-radius: 12px;
+            margin-top: 8px;
+            border: 1px solid transparent;
+            font-weight: 600;
+        }
+
+        .dd-links a:hover,
+        .dd-links a:focus-visible {
+            border-color: #111;
+            outline: none;
+        }
+
+        /* =========================================================
+       RESPONSIVE
+       - Di layar kecil: sembunyikan nav desktop, tampilkan details
+       ========================================================= */
+        @media (max-width: 720px) {
+            .nav {
+                display: none;
+            }
+
+            .mobile-nav {
+                display: block;
+            }
+
+            .nav-inner {
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- NAVBAR -->
+    <header class="navbar">
+        <div class="nav-inner">
+            <a class="brand" href="#top">MySchool</a>
+
+            <!-- NAV DESKTOP (CSS-only dropdown + multi-tier) -->
+            <ul class="nav" aria-label="Navigasi utama">
+                <li><a href="#home">Home</a></li>
+
+                <li class="has-dropdown">
+                    <!-- Link parent -->
+                    <a href="#materi" aria-haspopup="true">Materi</a>
+
+                    <!-- Dropdown level 1 -->
+                    <ul class="dropdown" aria-label="Menu Materi">
+                        <li><a href="#html">HTML</a></li>
+
+                        <!-- Multi-tier -->
+                        <li class="has-sub">
+                            <a href="#css">CSS <span class="sub-indicator">▸</span></a>
+                            <ul class="submenu" aria-label="Submenu CSS">
+                                <li><a href="#css-basic">CSS Dasar</a></li>
+                                <li><a href="#css-layout">Layout</a></li>
+                                <li><a href="#css-responsive">Responsive</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="has-sub">
+                            <a href="#project">Project <span class="sub-indicator">▸</span></a>
+                            <ul class="submenu" aria-label="Submenu Project">
+                                <li><a href="#mini-1">Mini Project 1</a></li>
+                                <li><a href="#mini-2">Mini Project 2</a></li>
+                            </ul>
+                        </li>
+
+                        <li><a href="#kontak">Kontak</a></li>
+                    </ul>
+                </li>
+
+                <li class="has-dropdown">
+                    <a href="#kelas" aria-haspopup="true">Kelas</a>
+                    <ul class="dropdown" aria-label="Menu Kelas">
+                        <li><a href="#x">Kelas X</a></li>
+                        <li><a href="#xi">Kelas XI</a></li>
+                        <li><a href="#xii">Kelas XII</a></li>
+                    </ul>
+                </li>
+
+                <li><a href="#about">About</a></li>
+            </ul>
+
+            <!-- NAV MOBILE (Pseudo-interaktif) -->
+            <div class="mobile-nav">
+                <details class="dd">
+                    <summary>Menu ▾</summary>
+                    <div class="dd-links">
+                        <a href="#home">Home</a>
+                        <a href="#materi">Materi</a>
+                        <a href="#css-basic">CSS Dasar</a>
+                        <a href="#css-layout">Layout</a>
+                        <a href="#css-responsive">Responsive</a>
+                        <a href="#mini-1">Mini Project 1</a>
+                        <a href="#mini-2">Mini Project 2</a>
+                        <a href="#kontak">Kontak</a>
+                    </div>
+                </details>
+            </div>
+        </div>
+    </header>
+
+    <main class="container" id="top">
+        <div class="card">
+            <h1>Dropdown Box & Navigasi Dropdown (HTML + CSS)</h1>
+            <p>
+                Halaman ini demo 3 hal: <b>select dropdown</b> (komponen input), <b>navbar dropdown CSS-only</b>,
+                dan <b>multi-tier dropdown</b> + versi mobile pakai <code>&lt;details&gt;</code>.
+            </p>
+        </div>
+
+        <!-- 1) SELECT -->
+        <section class="card" id="select-demo">
+            <h2>1) Dropdown Box: &lt;select&gt; + &lt;option&gt;</h2>
+            <p>
+                Ini contoh dropdown untuk memilih kategori. Tanpa JavaScript, dropdown ini fokusnya untuk latihan input
+                dan tampilan UI (bukan pindah halaman otomatis).
+            </p>
+
+            <div class="field">
+                <label for="kategori">Pilih Kategori Materi:</label>
+                <div class="select-wrap">
+                    <select id="kategori" name="kategori">
+                        <option value="">-- Pilih dulu --</option>
+                        <option value="html">HTML</option>
+                        <option value="css">CSS</option>
+                        <option value="js">JavaScript</option>
+                        <option value="project">Project</option>
+                    </select>
+                </div>
+
+                <p style="margin: 6px 0 0; font-size: 13px; color:#666;">
+                    Tips: gunakan <b>label</b> biar jelas, dan pakai styling wrapper supaya dropdown terlihat rapi.
+                </p>
+            </div>
+        </section>
+
+        <!-- Dummy sections for nav -->
+        <section class="card" id="home">
+            <h2>Home</h2>
+            <p>Contoh section home.</p>
+        </section>
+        <section class="card" id="materi">
+            <h2>Materi</h2>
+            <p>Contoh section materi.</p>
+        </section>
+
+        <section class="card" id="html">
+            <h2>HTML</h2>
+            <p>Contoh section HTML.</p>
+        </section>
+
+        <section class="card" id="css">
+            <h2>CSS</h2>
+            <p>Contoh section CSS.</p>
+        </section>
+        <section class="card" id="css-basic">
+            <h2>CSS Dasar</h2>
+            <p>Contoh submenu CSS Dasar.</p>
+        </section>
+        <section class="card" id="css-layout">
+            <h2>Layout</h2>
+            <p>Contoh submenu Layout.</p>
+        </section>
+        <section class="card" id="css-responsive">
+            <h2>Responsive</h2>
+            <p>Contoh submenu Responsive.</p>
+        </section>
+
+        <section class="card" id="project">
+            <h2>Project</h2>
+            <p>Contoh section project.</p>
+        </section>
+        <section class="card" id="mini-1">
+            <h2>Mini Project 1</h2>
+            <p>Contoh submenu project 1.</p>
+        </section>
+        <section class="card" id="mini-2">
+            <h2>Mini Project 2</h2>
+            <p>Contoh submenu project 2.</p>
+        </section>
+
+        <section class="card" id="kelas">
+            <h2>Kelas</h2>
+            <p>Contoh menu kelas.</p>
+        </section>
+        <section class="card" id="x">
+            <h2>Kelas X</h2>
+            <p>Contoh section kelas X.</p>
+        </section>
+        <section class="card" id="xi">
+            <h2>Kelas XI</h2>
+            <p>Contoh section kelas XI.</p>
+        </section>
+        <section class="card" id="xii">
+            <h2>Kelas XII</h2>
+            <p>Contoh section kelas XII.</p>
+        </section>
+
+        <section class="card" id="kontak">
+            <h2>Kontak</h2>
+            <p>Contoh section kontak.</p>
+        </section>
+        <section class="card" id="about">
+            <h2>About</h2>
+            <p>Contoh section about.</p>
+        </section>
+    </main>
+</body>
+
+</html>

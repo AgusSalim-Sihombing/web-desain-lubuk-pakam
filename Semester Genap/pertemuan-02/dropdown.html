@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dropdown Menu</title>
+    <link rel="stylesheet" href="dropdown.css">
+</head>
+<body>
+    <!-- <h2>Dropdown Menu</h2>
+    <label for="kelas">Pilih Kelas :</label>
+    <select name="" id="kelas">
+        <option value="">-- Pilih Dulu --</option>
+        <option value="x-1">X-1</option>
+        <option value="x-2">X-2</option>
+        <option value="x-3">X-3</option>
+    </select> -->
+
+    <div class="box">
+        <h2>Dropdown Warna</h2>
+        <p>Pilih Warna, Nanti kotak previewnya akan berubah</p>
+
+        <label for="warna">Pilih Warna:</label>
+        <select name="" id="warna">
+            <option value="">-- Pilih Warna Dulu --</option>
+            <option value="red">Merah</option>
+            <option value="green">Hijau</option>
+            <option value="blue">Biru</option>
+        </select>
+
+        <div id="preview" class="preview">
+            Kotak Ini Akan Berubah Warna
+        </div>
+
+        <script>
+            const warna = document.getElementById("warna");
+            const preview = document.getElementById("preview");
+
+            warna.addEventListener("change", () => {
+                const pilih = warna.value;
+
+                if(pilih === ""){
+                    preview.style.backgroundColor="white";
+                    preview.style.color="black";
+                    preview.textContent="Kotak Ini Akan Berubah Warna";
+                    return;
+                }
+
+                preview.style.backgroundColor=pilih;
+            })
+            
+        </script>
+
+    </div>
+    
+</body>
+</html>

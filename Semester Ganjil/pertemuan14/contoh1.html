@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .static {
+            position: static;
+            left: 100px;
+        }
+
+        /* .relative {
+            position: relative;
+            left: 100px;
+            top: 20px;
+        } */
+
+        .sticky{
+            position: sticky;
+            top: 0;
+            bottom: 0;
+            background-color: lightgray;
+        }
+        body{
+            /* background-color: rgb(100, 0, 17); */
+            background-image: url("https://i.pinimg.com/736x/db/fe/31/dbfe3166be30de52a90e3506c453c78e.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="static">
+        ini adalah penggunaan properti posision dengan nilai static
+    </div>
+
+    <div class="relative" style="padding-top: 1000px;">
+        ini adalah penggunaan properti posision dengan nilai relative
+    </div>
+
+    <div class="sticky">
+        Ini akan berhenti ketika mencapai titik paling atas
+    </div>
+
+    <div style="padding-bottom: 2000px;">
+        ini adalah teks random
+    </div>
+</body>
+
+</html>
